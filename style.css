@@ -144,9 +144,10 @@ h1 {
 
 .line:nth-child(8) {
     transform-origin: left;
-    transform: rotate(-45deg);
+    transform: rotate(-46deg);
     width: 0; /* 51vw */
     bottom: 1vw;
+    left: 1vw;
 }
 /* game-filed */
 
@@ -242,9 +243,65 @@ li:hover img {
     gap: 20px;
 }
 
-#gameList h2 {
+#gameList h2, 
+#settings h2 {
     font-size: 35px;
     font-weight: 200;
     margin-bottom: 2vw;
     text-align: center;
+}
+
+#settings {
+    display: none;
+    width:50vw;
+    height: 80dvh;
+    padding: 3vw 4vw;
+    border: 3px solid #466553;
+    box-shadow: -5px 5px 15px rgba(0,0,0,0.9), 5px -5px 15px rgba(255,255,255,0.2);
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.6);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    gap: 20px;
+}
+
+input {
+    display: none;
+}
+
+#Wo-box, 
+#Wx-box {
+    display: flex;
+    align-items: center;
+}
+
+.radio {
+    padding: 1vw;
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    gap: 1.5vw;
+}
+
+.radio span {
+    display: block;
+    width: 1.5vw;
+    height: 1.5vw;
+    border-radius: 50%;
+    border: 0.1vw solid black;
+    transition: 0.4s;
+    box-shadow: -0.2vw 0.2vw 0.4vw black, 0.2vw -0.2vw 0.3vw rgba(255, 255, 255, 0.7), inset 0 0 0 white;
+}
+
+.radio:hover span {
+    box-shadow: 0 0 0 black, 0 0 0 rgba(255, 255, 255, 0.7), inset 0 0 0.4vw white;
+    background-color: black;
+}
+
+#Wo:checked ~ #Wo-box label span,
+#Wx:checked ~ #Wx-box label span,
+#Cc:checked ~ #Cc-box label span,
+#Cb:checked ~ #Cb-box label span {
+    pointer-events: none;
+    background-color: #61695C;
+    box-shadow: 0 0 0 black, 0 0 0 rgba(255, 255, 255, 0.7), inset 0 0 0 white, inset 0 0 0.4vw black;
 }

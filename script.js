@@ -16,6 +16,8 @@ const finalField = document.getElementById("finalField");
 const field = document.getElementById("field");
 const gameList = document.getElementById("gameList");
 const games =  gameList.getElementsByTagName("li");
+const settings = document.getElementById("settings");
+
 
 const matrix = [
     [b11, b12, b13],
@@ -25,6 +27,7 @@ const matrix = [
 
 let stepsCount = 0;
 let isPlay = true;
+let isX = true;
 const x = '<div class="x-box"><span class="x-line"></span><span class="x-line"></span></div>';
 const o = '<div class="o-box"><div class="o-o-box"></div></div>';
 
@@ -36,7 +39,11 @@ for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) matrix[i][j].addEventLis
 function step(event) {
     if (isEmtyF(event.target) || !isPlay) return;
     stepsCount++;
-    stepsCount % 2 == 0 ? putSymbol(event.target, o) : putSymbol(event.target, x);
+    if (isX) {
+        stepsCount % 2 == 0 ? putSymbol(event.target, o) : putSymbol(event.target, x);
+    } else {
+        stepsCount % 2 == 0 ? putSymbol(event.target, x) : putSymbol(event.target, o);
+    }
     let result = checkF();
     if (result) {
        isPlay = false;
@@ -46,14 +53,17 @@ function step(event) {
        message.getElementsByTagName('h2')[0].innerHTML = `Победили ${winner}`;
        message.getElementsByTagName('p')[0].innerHTML = `Вы совершили ${stepsCount} ходов`;
        finalField.getElementsByClassName("game-box")[0].innerHTML = field.innerHTML;
-    }
-    if (stepsCount == 9) {
+
+       pushR(`Победили ${winner}`);
+    } else if (stepsCount == 9) {
        isPlay = false;
        setTimeout(showDark, 1000);
        message.style.display = "flex";
        message.getElementsByTagName('h2')[0].innerHTML = `Ничья!`;
        message.getElementsByTagName('p')[0].innerHTML = `Вы совершили 9 ходов`;
        finalField.getElementsByClassName("game-box")[0].innerHTML = field.innerHTML;
+
+       pushR(`Ничья!`);
     }
 }
 
@@ -124,6 +134,7 @@ window.addEventListener('click', (event)=> {
         darkBox.style.display = "none";
         message.style.display = "none";
         gameList.style.display = "none";
+        settings.style.display = "none";
         finalField.getElementsByClassName("game-box")[0].innerHTML = "";
     }
 })
@@ -132,16 +143,32 @@ function showR() {
     showDark()
     gameList.style.display = "flex";
 
-    let index = 0;
-    for(let key in localStorage) {
-        if (!localStorage.hasOwnProperty(key)) continue;
-        alert(`Победили ${key}`);
-        index++;
+    for(let i = 0; i < localStorage.length; i++) {
+        games[i].innerHTML = localStorage.getItem("s" + i);
     }
 }
 
-localStorage.clear();
-localStorage.setItem('1', "нолики");
-localStorage.setItem('2', "крестики");
-localStorage.setItem('3', "нолики");
-localStorage.setItem('4', "нолики");
+function pushR(winner) {
+    let rKey = "s" + localStorage.index;
+    localStorage.setItem(`s${localStorage.index % 10}`, winner);
+
+    localStorage.index = +localStorage.index + 1;
+}
+// localStorage.clear();
+
+if (!localStorage.index) localStorage.setItem("index", 0);
+
+function showS() {
+    showDark();
+    settings.style.display = "block";
+}
+
+function changeFirst(is) {
+    isX = is;
+} 
+
+function changeColor(color) {
+    document.getElementsByTagName('body')[0].style.background = color;
+}
+
+showS()

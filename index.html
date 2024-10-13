@@ -31,7 +31,7 @@
         <ul class="menu-box">
             <li onclick="showR()"><img src="svg/list-svgrepo-com.svg" alt="menu"></li>
             <li onclick="clearF()"><img src="svg/arrow-repeat-svgrepo-com.svg" alt="menu"></li>
-            <li onclick="showN()"><img src="svg/settings-svgrepo-com.svg" alt="menu"></li>
+            <li onclick="showS()"><img src="svg/settings-svgrepo-com.svg" alt="menu"></li>
         </ul>
     </div>
     <div id="blackBox">
@@ -56,6 +56,40 @@
         <li>-</li>
         <li>-</li>
       </ol>
+      <div id="settings">
+        <input type="radio" name="who" id="Wo">
+        <input type="radio" name="who" id="Wx" checked>    
+        <h2>Настройки</h2>
+        <div>Кто ходит первым: </div>
+        <div id="Wo-box">
+            <label for="Wo" class="radio" onclick="changeFirst(false)">
+                <span></span>
+                <div>нолики</div>
+            </label>
+        </div>
+        <div id="Wx-box">
+            <label for="Wx" class="radio" onclick="changeFirst(true)">
+                <span></span>
+                <div>крестики</div>
+            </label>
+        </div>
+
+        <input type="radio" name="C" id="Cc" checked>
+        <input type="radio" name="C" id="Cb">  
+        <div style="margin-top: 2vw;">Цвет фона: </div>
+        <div id="Cc-box">
+            <label for="Cc" class="radio" onclick="changeColor('radial-gradient(#61695C, #466553)')">
+                <span></span>
+                <div>классический</div>
+            </label>
+        </div>
+        <div id="Cb-box">
+            <label for="Cb" class="radio" onclick="changeColor('radial-gradient(white, black)')">
+                <span></span>
+                <div>черно-белый</div>
+            </label>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
 </body>
