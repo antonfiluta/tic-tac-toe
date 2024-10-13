@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Tic-Tac-Toe</title>
+</head>
+<body>
+    <div>
+        <h1>Крестики - Нолики</h1>
+        <div class="game-box" id="field">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="game-field right-border bottom-border" id="b11"></div>
+            <div class="game-field right-border bottom-border" id="b12"></div>
+            <div class="game-field bottom-border" id="b13"></div>
+            <div class="game-field right-border bottom-border" id="b21"></div>
+            <div class="game-field right-border bottom-border" id="b22"></div>
+            <div class="game-field bottom-border" id="b23"></div>
+            <div class="game-field right-border" id="b31"></div>
+            <div class="game-field right-border" id="b32"></div>
+            <div class="game-field" id="b33"></div>
+        </div>
+        <ul class="menu-box">
+            <li onclick="showR()"><img src="svg/list-svgrepo-com.svg" alt="menu"></li>
+            <li onclick="clearF()"><img src="svg/arrow-repeat-svgrepo-com.svg" alt="menu"></li>
+            <li onclick="showN()"><img src="svg/settings-svgrepo-com.svg" alt="menu"></li>
+        </ul>
+    </div>
+    <div id="blackBox">
+      <div id="message">
+        <h2>Ничья!</h2>
+        <p>Вы совершили 0 ходов</p>
+        <div id="finalField">
+            <div class="game-box image"></div>
+        </div>
+      </div>
+
+      <ol id="gameList">
+        <h2>Последние 10 игр</h2>
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+      </ol>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

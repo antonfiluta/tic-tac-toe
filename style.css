@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    height: 100dvh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(#61695C, #466553);
+}
+
+h1 {
+    text-align: center;
+    color: #FEFFFF;
+    font-size: 3.6vw;
+    font-weight: 200;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 1.5vw;
+    letter-spacing: 2px;
+    filter: drop-shadow(-3px 3px 4px rgba(0,0,0,0.5));
+}
+
+
+
+
+/* game-filed */
+.game-box{
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    width: 37vw;
+    height: 37vw;
+}
+
+.game-field{
+    width: 12vw;
+    height: 12vw;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    filter: drop-shadow(-1.5px 1.5px 3px rgba(0,0,0,0.5));
+}
+
+.right-border {
+    border-right: 3px solid #FEFFFF;
+}
+
+.bottom-border {
+    border-bottom: 3px solid #FEFFFF;
+}
+
+.x-line {
+    width: 12vw;
+    border: outset 1px crimson;
+    position: absolute;
+    left: 0;
+    box-sizing: content-box;
+    padding: 3px;
+}
+
+.x-line:nth-child(1) {
+    rotate: 45deg;
+}
+
+.x-line:nth-child(2) {
+    rotate: -45deg;
+}
+
+.o-box {
+    width: 9vw;
+    height: 9vw;
+    border-radius: 50%;
+    border: outset 1px white;
+    box-sizing: content-box;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.o-o-box {
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+    border: outset 1px white;
+    box-sizing: content-box;
+    padding: 5px;
+}
+
+.line {
+    position: absolute;
+    width: 0; /* 35vw */
+    height: 5px;
+    background-color: black;
+    box-shadow: 0 0 5px white;
+    z-index: 5;
+    transition: 0.6s;
+}
+
+.line:nth-child(1) {
+    top: 16%;
+}
+
+.line:nth-child(2) {
+    top: 49%;
+}
+
+.line:nth-child(3) {
+    top: 83%;
+}
+
+.line:nth-child(4) {
+    top: 0.3vw;
+    left: 16.5%;
+    transform-origin: left;
+    transform: rotate(90deg);
+}
+
+.line:nth-child(5) {
+    top: 0.3vw;
+    left: 49%;
+    transform-origin: left;
+    transform: rotate(90deg);
+}
+
+.line:nth-child(6) {
+    top: 0.3vw;
+    left: 81.5%;
+    transform-origin: left;
+    transform: rotate(90deg);
+}
+
+.line:nth-child(7) {
+    transform-origin: left;
+    transform: rotate(45deg);
+    width: 0; /* 51vw */
+}
+
+.line:nth-child(8) {
+    transform-origin: left;
+    transform: rotate(-45deg);
+    width: 0; /* 51vw */
+    bottom: 1vw;
+}
+/* game-filed */
+
+.menu-box {
+    display: flex;
+    justify-content: center;
+    gap: 1.5vw;
+    margin-top: 1.5vw;
+}
+
+.menu-box li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.menu-box li img {
+    box-sizing: content-box;
+    width: 3vw;
+    opacity: 0.6;
+    transition: 0.6s;
+    padding: 5px;
+}
+
+li:hover img {
+    opacity: 1;
+    filter: drop-shadow(-1.5px 1.5px 3px rgba(0,0,0,0.5));
+    transform: scale(1.05);
+}
+
+
+
+
+#blackBox {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100dvh;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: linear-gradient(to top right, rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#message {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width:45vw;
+    height: 30vw;
+    padding: 3vw;
+    border: 3px solid #466553;
+    box-shadow: -5px 5px 15px rgba(0,0,0,0.9), 5px -5px 15px rgba(255,255,255,0.2);
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.6);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: relative;
+    gap: 20px;
+}
+
+#message h2 {
+    font-size: 38px;
+    font-weight: 100;
+}
+
+#message p {
+    font-size: 18px;
+}
+
+#finalField {
+    transform: scale(0.4);
+    width: 1vw;
+    height: 1vw;
+}
+
+.image {
+    position: absolute;
+    left: -16.5vw;
+}
+
+#gameList {
+    display: none;
+    flex-direction: column;
+    width:45vw;
+    height: 80dvh;
+    padding: 3vw 6vw;
+    border: 3px solid #466553;
+    box-shadow: -5px 5px 15px rgba(0,0,0,0.9), 5px -5px 15px rgba(255,255,255,0.2);
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.6);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    gap: 20px;
+}
+
+#gameList h2 {
+    font-size: 35px;
+    font-weight: 200;
+    margin-bottom: 2vw;
+    text-align: center;
+}
